@@ -13,13 +13,18 @@ const Manager = () => {
                 <p className='text-green-900 text-lg text-center'>Your own Password Manager</p>
 
                 <div className="flex flex-col p-4 gap-8 text-black items-center">
-                    <input className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="" id="" />
+                    <input placeholder='Enter Website URL' className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="" id="" />
 
-                    <div className="flex w-full justify-between gap-8">
-                        <input className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="" id="" />
-                        <input className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="" id="" />
+                    <div  className="flex w-full justify-between gap-8">
+                        <input placeholder='Enter Username' className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="" id="" />
+
+                        <div className="absolute">
+                        <input placeholder='Enter Password' className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="" id="" />
+                        </div>
+
                     </div>
-                    <button className='flex justify-center items-center bg-green-400 hover:bg-green-500 rounded-full px-4 py-2 w-fit'>
+                    
+                    <button className='flex justify-center items-center gap-2 border border-green-900 bg-green-400 hover:bg-green-500 rounded-full px-8 py-2 w-fit'>
                     <lord-icon
                         src="https://cdn.lordicon.com/jgnvfzqg.json"
                         trigger="hover">
