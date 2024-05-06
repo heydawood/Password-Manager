@@ -9,15 +9,15 @@ const Navbar = () => {
                     Pass
                     <span className='text-green-500'>OP/ &gt;</span>
                 </div>
-                <ul className=''>
-                    <li className='flex gap-4'>
+                {/* <ul className=''>
+                    {/* <li className='flex gap-4'>
                         <a className='hover:font-semibold' href="/">Home</a>
                         <a className='hover:font-semibold' href="#">About</a>
                         <a className='hover:font-semibold' href="#">Contact</a>
                     </li>
-                </ul>
-                <button className='text-white bg-green-700 my-5 rounded-md flex justify-between items-center'>
-                <img className='invert w-10 p-1' src="/github.svg" alt="github" /> 
+                </ul> */}
+                <button className='text-white bg-green-700 my-5 rounded-full flex justify-between items-center'>
+                <img className='invert w-10 p-1 px-2' src="/github.svg" alt="github" /> 
                     <span className='font-bold px-2'>GitHub</span>
                 </button>
             </div>
