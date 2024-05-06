@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react"
 
 const Manager = () => {
     const ref = useRef()
+    const passwordRef = useRef()
     const [form, setform] = useState({ site: "", username: "", password: "" })
     const [passwordArray, setPasswordArray] = useState([])
 
@@ -26,11 +27,14 @@ const Manager = () => {
 
 
     const showPassword = () => {
+        passwordRef.current.type = "text"
         if (ref.current.src.includes("/eyecross.png")) {
             ref.current.src = "/eye.png"
+            passwordRef.current.type = "password"
         }
         else {
             ref.current.src = "/eyecross.png"
+            passwordRef.current.type = "text"
         }
     }
     return (
@@ -51,7 +55,7 @@ const Manager = () => {
                         <input value={form.username} onChange={handleChange} placeholder='Enter Username' className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="username" id="" />
 
                         <div className="relative">
-                            <input value={form.password} onChange={handleChange} placeholder='Enter Password' className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="password" id="" />
+                            <input ref={passwordRef} value={form.password} onChange={handleChange} placeholder='Enter Password' className='rounded-full border border-green-500 w-full p-4 py-1' type="password" name="password" id="" />
 
                             <span className='absolute right-[3px] top-[4px] cursor-pointer' onClick={showPassword}>
                                 <img ref={ref} className='p-1' width={26} src="/eye.png" alt="eye" />
@@ -71,7 +75,7 @@ const Manager = () => {
 
                 <div className="passwords">
                     <h2 className='font-bold text-xl py-3'>Your Saved Passwords</h2>
-                    {passwordArray.length === 0 && <div>No passwords to show</div>} 
+                    {passwordArray.length === 0 && <div>No passwords to show</div>}
                     {passwordArray.length != 0 && <table className='table-auto w-full rounded-md overflow-hidden'>
                         <thead className='bg-green-600 text-white'>
                             <tr>
@@ -81,12 +85,47 @@ const Manager = () => {
                             </tr>
                         </thead>
                         <tbody className='bg-green-100'>
-                            {passwordArray.map((item, index)=>{
+                            {passwordArray.map((item, index) => {
                                 return <tr key={index}>
-                                <td className='py-1 border border-white text-center w-32'><a href={item.site} target='_blank' >{item.site}</a></td>
-                                <td className='py-1 border border-white text-center w-32'>{item.username}</td>
-                                <td className='py-1 border border-white text-center w-32'>{item.password}</td>
-                            </tr>})}
+
+                                        <td className='flex items-center justify-center py-1 border border-white text-center'><a href={item.site} target='_blank' >{item.site}</a>
+
+                                            <div className='cursor-pointer size-7'>
+                                                <lord-icon
+                                                    style={{ "width": "25px", "height": "25px", "padding-top": "4px", "padding-left": "4px" }}
+                                                    src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
+                                                    trigger="hover">
+                                                </lord-icon>
+                                            </div>
+
+                                        </td>
+                                        <td className=' justify-center py-1 border border-white text-center'>
+                                            <div className='flex items-center justify-center'>
+                                                <span>{item.username}</span>
+                                                <div className='cursor-pointer size-7'>
+                                                    <lord-icon
+                                                        style={{ "width": "25px", "height": "25px", "padding-top": "4px", "padding-left": "4px" }}
+                                                        src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
+                                                        trigger="hover">
+                                                    </lord-icon>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className='flex items-center justify-center py-1 border border-white text-center'>
+                                            <div className='flex items-center justify-center'>
+                                                <span>{item.password}</span>
+                                                <div className='cursor-pointer size-7'>
+                                                    <lord-icon
+                                                        style={{ "width": "25px", "height": "25px", "padding-top": "4px", "padding-left": "4px" }}
+                                                        src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
+                                                        trigger="hover">
+                                                    </lord-icon>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    
+                                </tr>
+                            })}
                         </tbody>
                     </table>}
 
