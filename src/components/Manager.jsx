@@ -19,26 +19,28 @@ const Manager = () => {
 
 
     const savePassword = () => {
-        if (form.site.length > 3 && form.username.length > 3 && form.password.length > 3) {
+        if (form.site.length > 2 && form.username.length > 2 && form.password.length > 2) {
 
             setPasswordArray([...passwordArray, { ...form, id: uuidv4() }])
             localStorage.setItem("passwords", JSON.stringify([...passwordArray, { ...form, id: uuidv4() }]))
-            console.log([...passwordArray, form])
+           // console.log([...passwordArray, form])
             setform({ site: "", username: "", password: "" })
-            toast('Password Saved!', {
-                position: "bottom-left",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,   //toast alert
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            // toast('Password Saved!', {
+            //     position: "bottom-left",
+            //     autoClose: 1500,
+            //     hideProgressBar: false,
+            //     closeOnClick: true,                        //toast alert (throwing errors)
+            //     pauseOnHover: true,
+            //     draggable: true,
+            //     progress: undefined,
+            //     theme: "dark",
+            // });
         }
         else {
-            toast.error('Error:Password Not Saved!', {
+            toast.error('Error: Password Not Saved!', {
                 autoClose: 1500,
+                position: "bottom-left",
+                theme: "dark",
             });
         }
     }
@@ -48,16 +50,16 @@ const Manager = () => {
         if (c) {
             setPasswordArray(passwordArray.filter(item => item.id !== id))
             localStorage.setItem("passwords", JSON.stringify(passwordArray.filter(item => item.id !== id)))
-            toast.success('Password Deleted!', {
-                position: "bottom-left",
-                autoClose: 1500,
-                hideProgressBar: false,
-                closeOnClick: true,   //toast alert
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            // toast.success('Password Deleted!', {
+            //     position: "bottom-left",
+            //     autoClose: 1500,
+            //     hideProgressBar: false,
+            //     closeOnClick: true,            //toast alert(throwing errors)
+            //     pauseOnHover: true,
+            //     draggable: true,
+            //     progress: undefined,
+            //     theme: "dark",
+            // });
         }
     }
 
