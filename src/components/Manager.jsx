@@ -1,5 +1,7 @@
 import React from 'react'
 import { useRef, useState, useEffect } from "react"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Manager = () => {
     const ref = useRef()
@@ -17,7 +19,7 @@ const Manager = () => {
 
     const savePassword = () => {
         setPasswordArray([...passwordArray, form])
-        localStorage.setItem("password", JSON.stringify([...passwordArray, form]))
+        localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
         console.log([...passwordArray, form])
     }
 
@@ -39,12 +41,37 @@ const Manager = () => {
     }
 
     const copyText = (text) => {
+        toast('Copied to clipboard!', {
+            position: "bottom-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,   //toast alert
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
         navigator.clipboard.writeText(text)
     }
 
 
     return (
         <>
+            <ToastContainer
+                position="bottom-left"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable                                 //toast
+                pauseOnHover
+                theme="light"
+                transition="bounce" />
+            {/* Same as */}
+            <ToastContainer />
+
             <div className="absolute inset-0 -z-10 h-full w-full bg-green-50 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>
 
             <div className="mycontainer">
@@ -71,12 +98,12 @@ const Manager = () => {
 
                     </div>
 
-                    <button onClick={savePassword} className='flex justify-center items-center gap-2 border border-green-900 bg-green-400 hover:bg-green-500 rounded-full px-6 py-2 w-fit'>
+                    <button onClick={savePassword} className='flex justify-center items-center gap-2 border border-green-900 bg-green-400 hover:bg-green-500 rounded-full px-7 py-2 w-fit'>
                         <lord-icon
                             src="https://cdn.lordicon.com/jgnvfzqg.json"
                             trigger="hover">
                         </lord-icon>
-                        Add Password</button>
+                        Save</button>
                 </div>
 
                 <div className="passwords">
@@ -88,6 +115,7 @@ const Manager = () => {
                                 <th className='py-1'>Site</th>
                                 <th className='py-1'>Username</th>
                                 <th className='py-1'>Password</th>
+                                <th className='py-1'>Actions</th>
                             </tr>
                         </thead>
                         <tbody className='bg-green-100'>
@@ -96,7 +124,7 @@ const Manager = () => {
 
                                     <td className='flex items-center justify-center py-1 border border-white text-center'><a href={item.site} target='_blank' >{item.site}</a>
 
-                                        <div className='lordiconcopy cursor-pointer size-7' onClick={()=>{copyText(item.site)}}>
+                                        <div className='lordiconcopy cursor-pointer size-7' onClick={() => { copyText(item.site) }}>
                                             <lord-icon
                                                 style={{ "width": "25px", "height": "25px", "paddingTop": "4px", "paddingLeft": "4px" }}
                                                 src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
@@ -105,10 +133,11 @@ const Manager = () => {
                                         </div>
 
                                     </td>
-                                    <td className=' justify-center py-1 border border-white text-center'>
+
+                                    <td className='py-1 border border-white text-center'>
                                         <div className='flex items-center justify-center'>
                                             <span>{item.username}</span>
-                                            <div className='lordiconcopy cursor-pointer size-7' onClick={()=>{copyText(item.username)}}>
+                                            <div className='lordiconcopy cursor-pointer size-7' onClick={() => { copyText(item.username) }}>
                                                 <lord-icon
                                                     style={{ "width": "25px", "height": "25px", "paddingTop": "4px", "paddingLeft": "4px" }}
                                                     src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
@@ -117,16 +146,36 @@ const Manager = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td className='flex items-center justify-center py-1 border border-white text-center'>
+
+                                    <td className='py-1 border border-white text-center'>
                                         <div className='flex items-center justify-center'>
                                             <span>{item.password}</span>
-                                            <div className='lordiconcopy cursor-pointer size-7' onClick={()=>{copyText(item.password)}}>
+                                            <div className='lordiconcopy cursor-pointer size-7' onClick={() => { copyText(item.password) }}>
                                                 <lord-icon
                                                     style={{ "width": "25px", "height": "25px", "paddingTop": "4px", "paddingLeft": "4px" }}
                                                     src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
                                                     trigger="hover">
                                                 </lord-icon>
                                             </div>
+                                        </div>
+                                    </td>
+
+                                    <td className='justify-center py-1 border border-white text-center'>
+                                        <div className='flex items-center justify-center'>
+                                            <span className='cursor-pointer mx-1'>
+                                                <lord-icon
+                                                    style={{ "width": "25px", "height": "25px", "paddingTop": "4px", "paddingLeft": "4px" }}
+                                                    src="https://cdn.lordicon.com/gwlusjdu.json" //copy icon 
+                                                    trigger="hover">
+                                                </lord-icon>
+                                            </span>
+                                            <span className='cursor-pointer mx-1'>
+                                                <lord-icon
+                                                    style={{ "width": "25px", "height": "25px", "paddingTop": "4px", "paddingLeft": "4px" }}
+                                                    src="https://cdn.lordicon.com/skkahier.json" //copy icon 
+                                                    trigger="hover">
+                                                </lord-icon>
+                                            </span>
                                         </div>
                                     </td>
 
