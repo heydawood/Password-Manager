@@ -37,6 +37,12 @@ const Manager = () => {
             passwordRef.current.type = "text"
         }
     }
+
+    const copyText = (text) => {
+        navigator.clipboard.writeText(text)
+    }
+
+
     return (
         <>
             <div className="absolute inset-0 -z-10 h-full w-full bg-green-50 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>
@@ -88,42 +94,42 @@ const Manager = () => {
                             {passwordArray.map((item, index) => {
                                 return <tr key={index}>
 
-                                        <td className='flex items-center justify-center py-1 border border-white text-center'><a href={item.site} target='_blank' >{item.site}</a>
+                                    <td className='flex items-center justify-center py-1 border border-white text-center'><a href={item.site} target='_blank' >{item.site}</a>
 
-                                            <div className='cursor-pointer size-7'>
+                                        <div className='lordiconcopy cursor-pointer size-7' onClick={()=>{copyText(item.site)}}>
+                                            <lord-icon
+                                                style={{ "width": "25px", "height": "25px", "paddingTop": "4px", "paddingLeft": "4px" }}
+                                                src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
+                                                trigger="hover">
+                                            </lord-icon>
+                                        </div>
+
+                                    </td>
+                                    <td className=' justify-center py-1 border border-white text-center'>
+                                        <div className='flex items-center justify-center'>
+                                            <span>{item.username}</span>
+                                            <div className='lordiconcopy cursor-pointer size-7' onClick={()=>{copyText(item.username)}}>
                                                 <lord-icon
-                                                    style={{ "width": "25px", "height": "25px", "padding-top": "4px", "padding-left": "4px" }}
+                                                    style={{ "width": "25px", "height": "25px", "paddingTop": "4px", "paddingLeft": "4px" }}
                                                     src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
                                                     trigger="hover">
                                                 </lord-icon>
                                             </div>
+                                        </div>
+                                    </td>
+                                    <td className='flex items-center justify-center py-1 border border-white text-center'>
+                                        <div className='flex items-center justify-center'>
+                                            <span>{item.password}</span>
+                                            <div className='lordiconcopy cursor-pointer size-7' onClick={()=>{copyText(item.password)}}>
+                                                <lord-icon
+                                                    style={{ "width": "25px", "height": "25px", "paddingTop": "4px", "paddingLeft": "4px" }}
+                                                    src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
+                                                    trigger="hover">
+                                                </lord-icon>
+                                            </div>
+                                        </div>
+                                    </td>
 
-                                        </td>
-                                        <td className=' justify-center py-1 border border-white text-center'>
-                                            <div className='flex items-center justify-center'>
-                                                <span>{item.username}</span>
-                                                <div className='cursor-pointer size-7'>
-                                                    <lord-icon
-                                                        style={{ "width": "25px", "height": "25px", "padding-top": "4px", "padding-left": "4px" }}
-                                                        src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
-                                                        trigger="hover">
-                                                    </lord-icon>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className='flex items-center justify-center py-1 border border-white text-center'>
-                                            <div className='flex items-center justify-center'>
-                                                <span>{item.password}</span>
-                                                <div className='cursor-pointer size-7'>
-                                                    <lord-icon
-                                                        style={{ "width": "25px", "height": "25px", "padding-top": "4px", "padding-left": "4px" }}
-                                                        src="https://cdn.lordicon.com/iykgtsbt.json" //copy icon 
-                                                        trigger="hover">
-                                                    </lord-icon>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    
                                 </tr>
                             })}
                         </tbody>
