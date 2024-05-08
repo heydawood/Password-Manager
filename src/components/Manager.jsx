@@ -121,19 +121,19 @@ const Manager = () => {
 
             <div className="p-3 md:mycontainer min-h-[85.3vh]">
                 <h1 className='text-4xl font-bold text-center'>
-                    <span className='text-green-500'>&lt;</span>
+                    <span className='text-green-600'>&lt;</span>
                     Pass
-                    <span className='text-green-500'>OP/ &gt;</span></h1>
+                    <span className='text-green-600'>OP/ &gt;</span></h1>
                 <p className='text-green-900 text-lg text-center'>Your own Password Manager</p>
 
                 <div className="flex flex-col p-4 gap-8 text-black items-center">
-                    <input value={form.site} onChange={handleChange} placeholder='Enter Website URL' className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="site" id="site" />
+                    <input value={form.site} onChange={handleChange} placeholder='Enter Website URL' className='rounded-full border border-green-600 w-full p-4 py-1' type="text" name="site" id="site" />
 
                     <div className="flex flex-col md:flex-row w-full justify-between gap-8">
-                        <input value={form.username} onChange={handleChange} placeholder='Enter Username' className='rounded-full border border-green-500 w-full p-4 py-1' type="text" name="username" id="username" />
+                        <input value={form.username} onChange={handleChange} placeholder='Enter Username' className='rounded-full border border-green-600 w-full p-4 py-1' type="text" name="username" id="username" />
 
                         <div className="relative">
-                            <input ref={passwordRef} value={form.password} onChange={handleChange} placeholder='Enter Password' className='rounded-full border border-green-500 w-full p-4 py-1' type="password" name="password" id="password" />
+                            <input ref={passwordRef} value={form.password} onChange={handleChange} placeholder='Enter Password' className='rounded-full border border-green-600 w-full p-4 py-1' type="password" name="password" id="password" />
 
                             <span className='absolute right-[3px] top-[4px] cursor-pointer' onClick={showPassword}>
                                 <img ref={ref} className='p-1' width={26} src="/eye.png" alt="eye" />
@@ -143,7 +143,7 @@ const Manager = () => {
 
                     </div>
 
-                    <button onClick={savePassword} className='flex justify-center items-center gap-2 border border-green-900 bg-green-400 hover:bg-green-500 rounded-full px-7 py-2 w-fit'>
+                    <button onClick={savePassword} className='flex justify-center items-center gap-2 border border-green-900 bg-green-500 hover:bg-green-600 rounded-full px-7 py-2 w-fit'>
                         <lord-icon
                             src="https://cdn.lordicon.com/jgnvfzqg.json"
                             trigger="hover">
